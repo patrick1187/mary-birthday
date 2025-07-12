@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Mary!</title>
+    <style>
+
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: linear-gradient(to right, #ff758c, #ff7eb3); /* Romantic pink gradient */
+            color: white;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: background 0.5s;
+            overflow: hidden;
+        }
+
+        .container {
+            padding: 20px;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+        button {
+            background: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1em;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            color: #ff758c;
+            font-weight: bold;
+        }
+        button:hover {
+            transform: scale(1.05);
+        }
+        .letter {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            color: #333;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            display: none;
+            text-align: left;
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff758c; /* Matching pink */
+            border-radius: 50%;
+            animation: fall 5s linear infinite;
+        }
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+        .signature {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 1.5em;
+            color: #ff758c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="landing">
+        <h1>🎉 Happy Birthday, mi amor 🎂</h1>
+        <p>Click the button below to open my love letter to you...</p>
+        <button onclick="showLetter()">Open My Heart 💖</button>
+    </div>
+
+    <div class="letter" id="letter">
+        <h2>To My Beautiful baby,</h2>
+        <p>
+            Happy Birthday to the girl who stole my heart ,even before we’ve met. 🌹 Every day, you amaze me with your kindness,sweet heart,laugh and everything you do ,and I’m so grateful you’re mine.  
+            <br><br>
+            I wish I could be there to hold your hand, see your smile as you blow out the candles, and whisper I love you in person. But since we’re miles apart, I’m sending this love letter instead.  
+            <br><br>
+            You’re my favorite haiii and the hardest goodbye. Our late-night calls, your voice, the way you laugh and the jokes you say all the time and your sweet cute voice that makes me melt everytime i hear it ,it all makes the distance feel smaller.  
+            <br><br>
+            Today, I hope you feel how special you are. You deserve all the love, and joy in the world. One day, I’ll kiss your forehead on your birthday. Until then, here’s a virtual one mwah 💋  
+            <br><br>
+            I’m counting down the days until I can finally hold you. Until then, I’m yours always.  
+        </p>
+        <p style="text-align: right;">
+            Forever yours,<br>
+            <span class="signature">Patrick</span>
+        </p>
+    </div>
+
+    <script>
+        function showLetter() {
+            document.getElementById('landing').style.display = 'none';
+            document.getElementById('letter').style.display = 'block';
+            createConfetti();
+        }
+
+        function createConfetti() {
+            const colors = ['#ff758c', '#ff7eb3', '#ff8e9e', '#ffa3b5', '#ffb3c6']; // Pink/purple confetti
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                document.body.appendChild(confetti);
+            }
+        }
+    </script>
+<div style="position:fixed; bottom:20px; right:20px; font-size:30px; animation: pulse 1s infinite;">❤️</div>
+<style>
+  @keyframes pulse { 0% {transform: scale(1);} 50% {transform: scale(1.3);} }
+</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Keep your existing head content -->
+    <style>
+        /* Add this new style */
+        #timeLock {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            color: white;
+        }
+        .locked-button {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <!-- Time Lock Overlay (shown first) -->
+    <div id="timeLock">
+        <h1>🎁 Your Special Gift</h1>
+        <p>Will unlock in...</p>
+        <div id="countdown" style="font-size: 2em; font-weight: bold; margin: 20px 0;">
+            00:00:00
+        </div>
+        <p>Be ready at exactly <span id="unlockTime"></span>!</p>
+    </div>
+
+    <!-- Your existing content (initially hidden) -->
+    <div class="container" id="landing" style="display: none;">
+        <h1>🎉 Happy Birthday, mi amor 🎂</h1>
+        <button id="openButton" class="locked-button" onclick="showLetter()">Open My Heart 💖</button>
+    </div>
+
+    <div class="letter" id="letter" style="display: none;">
+        <!-- Your existing letter content -->
+    </div>
+
+    <script>
+        // SET YOUR UNLOCK TIME HERE (in her timezone)
+        const unlockDate = new Date("2025-07-13T00:00:00"); // CHANGE THIS
+        
+        function updateCountdown() {
+            const now = new Date();
+            const diff = unlockDate - now;
+            
+            if (diff <= 0) {
+                // TIME'S UP - REVEAL EVERYTHING!
+                document.getElementById("timeLock").style.display = "none";
+                document.getElementById("landing").style.display = "block";
+                document.getElementById("openButton").classList.remove("locked-button");
+                return;
+            }
+            
+            // Update countdown display
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById("countdown").textContent = 
+                `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            // Show unlock time
+            document.getElementById("unlockTime").textContent = 
+                unlockDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        }
+
+        // Initial setup
+        document.getElementById("openButton").addEventListener("click", function(e) {
+            if (new Date() < unlockDate) {
+                e.preventDefault();
+                alert("⌛ Not yet! Your gift will unlock at the scheduled time.");
+            }
+        });
+
+        // Check every second
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // Run immediately
+
+        // Your existing confetti function
+        function createConfetti() {
+            /* Keep your existing confetti code */
+        }
+    </script>
+</body>
+</html>
+
+</body>
+</html>
