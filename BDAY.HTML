@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Mary!</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: linear-gradient(to right, #ff758c, #ff7eb3); /* Romantic pink gradient */
+            color: white;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: background 0.5s;
+            overflow: hidden;
+        }
+        .container {
+            padding: 20px;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+        button {
+            background: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1em;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            color: #ff758c;
+            font-weight: bold;
+        }
+        button:hover {
+            transform: scale(1.05);
+        }
+        .letter {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            color: #333;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            display: none;
+            text-align: left;
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff758c; /* Matching pink */
+            border-radius: 50%;
+            animation: fall 5s linear infinite;
+        }
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+        .signature {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 1.5em;
+            color: #ff758c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="landing">
+        <h1>🎉 Happy Birthday, mi amor 🎂</h1>
+        <p>Click the button below to open my love letter to you...</p>
+        <button onclick="showLetter()">Open My Heart 💖</button>
+    </div>
+
+    <div class="letter" id="letter">
+        <h2>To My Beautiful baby,</h2>
+        <p>
+            Happy Birthday to the girl who stole my heart ,even before we’ve met. 🌹 Every day, you amaze me with your kindness,sweet heart,laugh and everything you do ,and I’m so grateful you’re mine.  
+            <br><br>
+            I wish I could be there to hold your hand, see your smile as you blow out the candles, and whisper I love you in person. But since we’re miles apart, I’m sending this love letter instead.  
+            <br><br>
+            You’re my favorite haiii and the hardest goodbye. Our late-night calls, your voice, the way you laugh and the jokes you say all the time and your sweet cute voice that makes me melt everytime i hear it ,it all makes the distance feel smaller.  
+            <br><br>
+            Today, I hope you feel how special you are. You deserve all the love, and joy in the world. One day, I’ll kiss your forehead on your birthday. Until then, here’s a virtual one mwah 💋  
+            <br><br>
+            I’m counting down the days until I can finally hold you. Until then, I’m yours always.  
+        </p>
+        <p style="text-align: right;">
+            Forever yours,<br>
+            <span class="signature">Patrick</span>
+        </p>
+    </div>
+
+    <script>
+        function showLetter() {
+            document.getElementById('landing').style.display = 'none';
+            document.getElementById('letter').style.display = 'block';
+            createConfetti();
+        }
+
+        function createConfetti() {
+            const colors = ['#ff758c', '#ff7eb3', '#ff8e9e', '#ffa3b5', '#ffb3c6']; // Pink/purple confetti
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                document.body.appendChild(confetti);
+            }
+        }
+    </script>
+</body>
+</html>
